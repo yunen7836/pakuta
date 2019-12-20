@@ -1,0 +1,45 @@
+<div class ="contents row">
+  <div class="content_post" style="background-image: url(<%= @question.image %>);">
+    <% if user_signed_in? && current_user.id == @question.user_id %>
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to '編集', "/questions/#{@question.id}/edit", method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', "/questions/#{@question.id}", method: :delete %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    <%= simple_format(@question.title) %>
+    <span class="name">
+      <a href="/users/<%= @question.user.id %>">
+        <span>投稿者</span><%= @question.user.nickname %>
+      </a>
+    </span>
+  </div>
+  <div class="container">
+    <% if current_user %>
+      <%= form_with(model: [@question, @boke], local: true) do |form| %>
+        <%= form.text_area :boke, placeholder: "ボケる", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ ボケの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+
+        <div class="comments">
+      <h4>＜ボケ一覧＞</h4>
+      <% if @bokes %>
+        <% @bokes.each do |boke| %>
+          <p>
+            <strong><%= link_to boke.user.nickname, "/users/#{boke.user_id}" %>：</strong>
+            <%= boke.boke %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

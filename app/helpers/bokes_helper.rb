@@ -1,0 +1,2 @@
+module BokesHelper
+end
