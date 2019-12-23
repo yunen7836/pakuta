@@ -27,7 +27,7 @@
         <%= form.submit "SEND" %>
       <% end %>
     <% else %>
-      <strong><p>※※※ ボケの投稿には新規登録/ログインが必要です ※※※</p></strong>
+      <strong><p>※※※ ボケの投稿、いいねをするには新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
 
         <div class="comments">
@@ -38,6 +38,20 @@
             <strong><%= link_to boke.user.nickname, "/users/#{boke.user_id}" %>：</strong>
             <%= boke.boke %>
           </p>
+          <% if current_user %>
+          <% if current_user.likes.find_by(boke_id: boke.id) %>
+<% liked = 1 %>
+          <% @likes.each do |like| %>
+            <% if like.boke_id == boke.id %>
+              <% liked = like %>
+            <% end %>
+            <% end %> 
+            
+            <%= link_to "いいね解除", "/questions/#{boke.question.id}/bokes/#{boke.id}/likes/#{liked.id}", method: :delete %>
+          <% else %>
+            <%= link_to "いいね", "/questions/#{boke.question.id}/bokes/#{boke.id}/likes", method: :post %>
+         <% end %>
+         <% end %>
         <% end %>
       <% end %>
     </div>

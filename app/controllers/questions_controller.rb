@@ -28,8 +28,10 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @likes = Like.all
     @boke = Boke.new
     @bokes = @question.bokes.includes(:user)
+    # @like_id = @likes.id.find {current_user.id == @bokes.id }
   end
 
   private

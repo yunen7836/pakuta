@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :questions
   has_many :bokes
+  has_many :likes, dependent: :destroy
 end
