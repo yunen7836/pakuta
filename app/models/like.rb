@@ -3,4 +3,5 @@ class Like < ApplicationRecord
   validates :boke_id, presence: true
   belongs_to :boke
   belongs_to :user
+  belongs_to :question
 end

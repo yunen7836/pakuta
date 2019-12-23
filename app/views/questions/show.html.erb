@@ -32,24 +32,48 @@
 
         <div class="comments">
       <h4>＜ボケ一覧＞</h4>
+
       <% if @bokes %>
         <% @bokes.each do |boke| %>
-          <p>
-            <strong><%= link_to boke.user.nickname, "/users/#{boke.user_id}" %>：</strong>
-            <%= boke.boke %>
-          </p>
-          <% if current_user %>
-          <% if current_user.likes.find_by(boke_id: boke.id) %>
-<% liked = 1 %>
+        <% likes_count = 0 %>
           <% @likes.each do |like| %>
             <% if like.boke_id == boke.id %>
-              <% liked = like %>
+              <% likes_count = likes_count + 1 %>
+              
             <% end %>
+            
+            <% end %> 
+          <p>
+
+
+            <strong><%= link_to boke.user.nickname, "/users/#{boke.user_id}" %>：</strong>
+            <%= boke.boke %>
+          
+          <% if current_user %>
+          <% if current_user.likes.find_by(boke_id: boke.id) %>
+
+               <% liked = 1 %>
+          <% @likes.each do |like| %>
+            <% if like.boke_id == boke.id %>
+    
+              <% liked = like.id %>
+            <% end %>
+            
             <% end %> 
             
-            <%= link_to "いいね解除", "/questions/#{boke.question.id}/bokes/#{boke.id}/likes/#{liked.id}", method: :delete %>
+            <%= link_to "/questions/#{boke.question.id}/bokes/#{boke.id}/likes/#{liked}", method: :delete do %>
+              <%= "#{likes_count}" %>
+              <span class="fa fa-heart">いいね解除 </span>
+          
+            <% end %>
+               
           <% else %>
-            <%= link_to "いいね", "/questions/#{boke.question.id}/bokes/#{boke.id}/likes", method: :post %>
+            <%= link_to "/questions/#{boke.question.id}/bokes/#{boke.id}/likes", method: :post do %>
+              <%= "#{likes_count}" %>
+              <span class="fa fa-heart-o">いいね</span>
+
+            <% end %>
+            </p>
          <% end %>
          <% end %>
         <% end %>

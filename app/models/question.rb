@@ -4,4 +4,5 @@ class Question < ApplicationRecord
 
   belongs_to :user
   has_many :bokes, dependent: :destroy
+  has_many :likes
 end

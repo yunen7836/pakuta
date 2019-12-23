@@ -27,11 +27,10 @@ class QuestionsController < ApplicationController
     question.update(question_params)
   end
 
-  def show
-    @likes = Like.all
+  def show 
+    @likes = Like.where(question_id: params[:id])
     @boke = Boke.new
     @bokes = @question.bokes.includes(:user)
-    # @like_id = @likes.id.find {current_user.id == @bokes.id }
   end
 
   private
