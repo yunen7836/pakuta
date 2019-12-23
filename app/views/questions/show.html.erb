@@ -19,7 +19,14 @@
         <span>投稿者</span><%= @question.user.nickname %>
       </a>
     </span>
+    
   </div>
+  <div>
+ <% @likes_top.each do |likes_top| %>
+ 人気のボケ：
+<%= likes_top.boke %>
+<% end %>
+</div>
   <div class="container">
     <% if current_user %>
       <%= form_with(model: [@question, @boke], local: true) do |form| %>
