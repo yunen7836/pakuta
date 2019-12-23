@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
 
   def show 
     @likes = Like.where(question_id: params[:id])
+    @likes_top = Boke.find(@likes.group(:boke_id).order('count(boke_id) desc').limit(1).pluck(:boke_id))
     @boke = Boke.new
     @bokes = @question.bokes.includes(:user)
   end
