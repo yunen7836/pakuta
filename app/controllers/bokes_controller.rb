@@ -1,6 +1,7 @@
 class BokesController < ApplicationController
   def create
     boke = Boke.create(boke_params)
+    flash[:notice] = 'ボケを投稿しました'
     redirect_to "/questions/#{boke.question.id}" 
   end
 

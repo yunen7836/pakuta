@@ -24,11 +24,11 @@
   <body>
     <header class="header">
       <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">Pakuta</a></h1>
-        <h1 class="grid-6"><a href="/ranking/likesorder">Ranking</a></h1>
+        <h1 class="grid-6"><a href="/"><img class="logo", src="/uploads/tmp/pakuta-logo.jpg"></a></h1>
+        <h1 class="grid-6 ranking"><a href="/ranking/likesorder">Ranking</a></h1>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
-            <span><%= current_user.nickname %>
+            <span ><%= current_user.nickname %>
               <ul class="user__info">
                 <li>
                   <%= link_to "マイページ", "/users/#{current_user.id}" %>
@@ -46,9 +46,10 @@
         <% end %>
       </div>
     </header>
-
+    <div class="background", style="background: url(/uploads/tmp/free-wood-patterns-02.jpg);">
+    <%= render 'layouts/notifications' %>
     <%= yield %>
-
+    </div>
     <footer>
       <p>
         Copyright Pakuta 2019.
