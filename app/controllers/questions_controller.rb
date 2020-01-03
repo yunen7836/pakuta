@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
     @likes = Like.where(question_id: params[:id])
     @likes_top = Boke.find(@likes.group(:boke_id).order('count(boke_id) desc').limit(1).pluck(:boke_id))
     @boke = Boke.new
-    @bokes = @question.bokes.includes(:user)
+    @bokes = @question.bokes.includes(:user).order("created_at DESC").page(params[:page]).per(5)
   end
 
   private
