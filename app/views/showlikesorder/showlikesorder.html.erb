@@ -106,9 +106,10 @@
       <li class="tab-swich-list"><%= link_to "いいね数順", "/questions/#{@question.id}/showlikesorder/showlikesorder" %></li>
       </ul>
 </div>
+
       <% if @bokes %>
         <% @bokes.each do |boke| %>
-                <% @likes_top.each do |likes_top| %>
+        <% @likes_top.each do |likes_top| %>
         <% if boke.id != likes_top.id %>
         <% likes_count = 0 %>
           <% @likes.each do |like| %>
@@ -171,8 +172,8 @@
 
             <% end %>
             </p>
-                     <% end %>
-         <% end %>
+            <% end %>
+            <% end %>
          <% end %>
          <% end %>
         <% end %>
