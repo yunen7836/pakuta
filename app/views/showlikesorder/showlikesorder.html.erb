@@ -1,5 +1,6 @@
 <div class ="contents row">
   <div class="container">
+     <div class="favorite-boke">人気のボケ</div>
   <div class="content_post" style="background-image: url(<%= @question.image %>);">
     <% if user_signed_in? && current_user.id == @question.user_id %>
       <div class="more">
@@ -23,9 +24,9 @@
     
   </div>
         <% if @bokes %>
-  <div>
+  <div class="comments">
  <% @likes_top.each do |likes_top| %>
- <div>＜人気のボケ＞</div>
+
 
 
 
@@ -145,7 +146,7 @@
 
 
             <strong><%= link_to boke.user.nickname, "/users/#{boke.user_id}" %>：</strong>
-            <%= boke.boke %>
+            <span class="top-boke"><%= boke.boke %></span>
           
           <% if current_user %>
           <% if current_user.likes.find_by(boke_id: boke.id) %>

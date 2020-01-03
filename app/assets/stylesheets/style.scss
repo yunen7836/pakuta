@@ -6,12 +6,12 @@
  * http://ipafont.ipa.go.jp/（IPAフォントのURL）
  * http://ipafont.ipa.go.jp/ipa_font_license_v1.html（IPAフォントライセンスv1.0のURL）
  */
-// @font-face {
-//     font-family: 'ほのか明朝';
-//     src: url('font_1_honokamin.ttf') format('truetype');
-//     font-weight: normal;
-//     font-style: normal;
-// }
+@font-face {
+    font-family: 'ほのか明朝';
+    src: url('font_1_honokamin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @import url(http://fonts.googleapis.com/css?family=Unica+One);
 
@@ -50,8 +50,8 @@ h1,h2,h3,h4,h5,h6,body {
 line-height: 1.57;
   letter-spacing: 0.15em;
   font-size: 16px;
-  color: $dark;
-  font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+
+  font-family:  sans-serif,"メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic",'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo ;
   margin: 0;
 }
 
@@ -366,7 +366,6 @@ form {
   padding: 5px;
   margin-top: 15px;
   a {
-    color: $accent;
     &:hover {
       text-decoration: underline;
     }
@@ -401,7 +400,9 @@ footer {
 }
 
 .likes_wrapper {
-  margin-bottom: 100px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  border-bottom: lightgray solid 1px;
 }
 .top-boke {
   font-size: 50px;
@@ -418,6 +419,9 @@ footer {
 
 .tag-swich {
   display: inline-block;
+  a {
+    color: $accent;
+  }
 }
 
 ul {
@@ -427,4 +431,10 @@ ul {
 .tab-swich-list {
   padding-right: 20px;
   float: left;
+}
+
+.favorite-boke {
+  border-bottom: 2px solid #f4c536;
+  color: #222;
+  font-size: 1.2em;
 }
