@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: pakuta_production
-  username: pakuta
-  password: <%= ENV['PAKUTA_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
